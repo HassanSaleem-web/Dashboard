@@ -236,7 +236,7 @@
       chatBox.scrollTop = chatBox.scrollHeight;
   
       try {
-        const response = await fetch('http://localhost:5000/api/chat', {
+        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -281,7 +281,7 @@ typeChar();
   }));
 
   try {
-    const response = await fetch('http://localhost:5000/api/chat/save', {
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/chat/save`,  {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ session: messages })

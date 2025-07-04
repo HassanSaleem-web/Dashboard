@@ -461,7 +461,7 @@ footer {
 
   async function loadProjects() {
     try {
-      const response = await fetch('http://localhost:5000/api/projects');
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/chat`);
       const projects = await response.json();
       console.log("📦 Fetched projects from backend:", projects);
 
@@ -625,7 +625,7 @@ function addMilestone() {
 }
  async function generateMilestonesWithAI() {
   try {
-    const res = await fetch('http://localhost:5000/api/projects/ai-generate', {
+    const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -698,7 +698,7 @@ async function saveProjectToBackend() {
   });
 
   try {
-    const res = await fetch('http://localhost:5000/api/projects/save', {
+    const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
