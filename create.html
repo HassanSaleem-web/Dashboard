@@ -1,219 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GeneX - Chat UI</title>
 
-  <head>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-liberty-market.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <meta charset="utf-8">
-    <meta name="author" content="templatemo">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    body > footer {
+      margin-top: auto;
+    }
 
-    <title>GeneX - Create Project Page</title>
+    .page-heading {
+      background-image: url(assets/images/heading-bg.jpg); /* Update path as needed */
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-color: #2a2a2a;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 20px;
+    }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    .chat-container .chat-message,
+.chat-container .input-area input,
+.chat-container .input-area button {
+  font-family:  'Rajdhani', sans-serif;
+}
+.chat-container {
+  background: linear-gradient(145deg, #ffffff, #f3f3f8); /* light gradient */
+  width: 100%;
+  max-width: 850px;
+  height: 70vh;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08); /* softer, elegant shadow */
+  border: 1px solid #ddd; /* optional border to define edges */
+}
 
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-liberty-market.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<!--
 
-TemplateMo 577 Liberty Market
+    .chat-box {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      color: #fff;
+    }
 
-https://templatemo.com/tm-577-liberty-market
+    .chat-box {
+  display: flex;
+  flex-direction: column;
+}
 
--->
-  </head>
+.chat-message {
+  margin-bottom: 15px;
+  background-color: #00B894;
+  padding: 12px 16px;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-family:  'Rajdhani', sans-serif;
+  font-size: 16px;
+  align-self: flex-start; /* Default: bot messages on left */
+}
+
+.chat-message.user {
+  background-color: #7453FC;
+  align-self: flex-end; /* User messages on right */
+}
+
+    .input-area {
+      display: flex;
+      padding: 15px 20px;
+      background: #f4f4f9;
+      border-top: 1px solid #ccc;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      background-color: #ffffff; /* Pure white input */
+      color: #333;
+      font-weight: 500;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-area button {
+      margin-left: 10px;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: none;
+      background: #7453FC;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .input-area button:hover {
+      background: linear-gradient(90deg, #c084fc, #9b6bfa);
+    }
+    .chat-message {
+  margin-bottom: 15px;
+  background-color: #00B894;
+  padding: 12px 16px;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+}
+.typing {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background-color: #00B894;
+  border-radius: 12px;
+  width: fit-content;
+  font-family:  'Rajdhani', sans-serif;
+}
+
+.typing span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+  </style>
+</head>
 
 <body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
+  <!-- ***** Header ***** -->
   <header class="header-area header-sticky">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="explore.html">Explore</a></li>
-                        <li><a href="details.html">Idea Details</a></li>
-                        <li><a href="author.html">Author</a></li>
-                        <li><a href="create.html" class="active">Create Yours</a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
+      <nav class="main-nav">
+        <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="GeneX Logo" /></a>
+        <ul class="nav">
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          
+          <li><a href="thelab.html" >The Lab</a></li>
+          
+          <li><a href="create.html" >Create Yours</a></li>
+        </ul>
+        <a class="menu-trigger"><span>Menu</span></a>
+      </nav>
     </div>
   </header>
-  <!-- ***** Header Area End ***** -->
 
+  <!-- ***** Chat Section ***** -->
   <div class="page-heading normal-space">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h6>GeneX</h6>
-          <h2>Publish Your Idea Now.</h2>
-          <span>Home > <a href="#">Create Yours</a></span>
-          <div class="buttons">
-            <div class="main-button">
-              <a href="explore.html">Explore Our Ideas</a>
-            </div>
-            <div class="border-button">
-              <a href="create.html">Publish your Idea</a>
-            </div>
-          </div>
-        </div>
+    <div class="chat-container">
+      <div class="chat-box" id="chat-box">
+        <!-- Old messages -->
+
+<div class="chat-message" id="intro-message"></div>
+
+      </div>
+      <div class="input-area">
+        <input type="text" placeholder="Type your command..." id="user-input" />
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="saveChat()" style="background: #00b894;">💾 Save</button>
       </div>
     </div>
   </div>
 
-  <div class="item-details-page">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>Apply For <em>Your Idea</em> Here.</h2>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <form id="contact" action="" method="post">
-            <div class="row">
-              <div class="col-lg-4">
-                <fieldset>
-                  <label for="title">Idea Title</label>
-                  <input type="title" name="title" id="title" placeholder="Ex. Lyon King" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-4">
-                <fieldset>
-                  <label for="description">Description For Idea</label>
-                  <input type="description" name="description" id="description" placeholder="Give us your idea" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-4">
-                <fieldset>
-                  <label for="username">Your Username</label>
-                  <input type="username" name="username" id="username" placeholder="Ex. @alansmithee" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-6">
-                <fieldset>
-                  <label for="price">Price Of Idea</label>
-                  <input type="price" name="price" id="price" placeholder="Price depends on quality. Ex. 0.06 ETH" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-6">
-                <fieldset>
-                  <label for="royalities">Royalties</label>
-                  <input type="royalities" name="royalities" id="royalities" placeholder="Common royalties 1-25%" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-4">
-                <fieldset>
-                  <label for="file">Your File</label>
-                  <input type="file" id="file" name="myfiles[]" multiple />
-                </fieldset>
-              </div>
-              <div class="col-lg-8">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="orange-button">Submit Your Applying</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>This Is <em>Your Idea</em> Preview.</h2>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="left-image">
-            <img src="assets/images/create-yours.jpg" alt="" style="border-radius: 20px;">
-          </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <h4>Dolores Haze Westworld Eye</h4>
-          <span class="author">
-            <img src="assets/images/author-02.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-            <h6>Kataleya Smithee<br><a href="#">@kataleey</a></h6>
-          </span>
-          <p>Lorem ipsum dolor sit amet, consectetu dipiscingei elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <div class="row">
-            <div class="col-3">
-              <span class="bid">
-                Current Bid<br><strong>0.06 ETH</strong><br><em>($8055,35)</em>
-              </span>
-            </div>
-            <div class="col-4">
-              <span class="owner">
-                Owner<br><strong>Alan Smithee</strong><br><em>(@asmithee)</em>
-              </span>
-            </div>
-            <div class="col-5">
-              <span class="ends">
-                Ends In<br><strong>3D 05H 20M 58S</strong><br><em>(January 22nd, 2021)</em>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!-- ***** Footer ***** -->
   <footer>
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2022 <a href="#">GeneX</a> Marketplace Co., Ltd. All rights reserved.
-          &nbsp;&nbsp;
-          Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">CR3ATIV3 CORN3R
-          </a></p>
-        </div>
-      </div>
+      <p>Copyright © 2022 <a href="#">GeneX</a> Marketplace Co., Ltd. All rights reserved.
+        &nbsp;&nbsp;Designed by <a href="https://templatemo.com" target="_blank">CR3ATIV3 CORN3R</a></p>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Optional Scripts -->
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById('user-input');
+      const chatBox = document.getElementById('chat-box');
+      const message = input.value.trim();
+  
+      if (!message) return;
+  
+      // Display user's message
+      const userMsg = document.createElement('div');
+      userMsg.classList.add('chat-message', 'user');
+      userMsg.textContent = message;
+      chatBox.appendChild(userMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+      input.value = '';
+  
+      // Add typing indicator
+      const typingEl = document.createElement('div');
+      typingEl.classList.add('typing');
+      typingEl.innerHTML = `<span></span><span></span><span></span>`;
+      typingEl.id = 'typing-indicator';
+      chatBox.appendChild(typingEl);
+      chatBox.scrollTop = chatBox.scrollHeight;
+  
+      try {
+        const response = await fetch('http://localhost:5000/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ userMessage: message })
+        });
+  
+        const data = await response.json();
+        const reply = data.reply || 'No response';
+  
+        // Remove typing indicator
+        typingEl.remove();
+  
+        const assistantMsg = document.createElement('div');
+assistantMsg.classList.add('chat-message');
+chatBox.appendChild(assistantMsg);
 
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
+let index = 0;
+function typeChar() {
+  if (index < reply.length) {
+    assistantMsg.textContent += reply.charAt(index);
+    index++;
+    chatBox.scrollTop = chatBox.scrollHeight;
+    setTimeout(typeChar, 30); // adjust speed here
+  }
+}
+typeChar();
 
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
-  </body>
+      } catch (err) {
+        console.error('Chat error:', err);
+        typingEl.remove();
+        const errorMsg = document.createElement('div');
+        errorMsg.classList.add('chat-message');
+        errorMsg.textContent = '⚠️ Failed to get response from GeneX.';
+        chatBox.appendChild(errorMsg);
+      }
+    }
+    async function saveChat() {
+  const messages = Array.from(document.querySelectorAll('.chat-message')).map(msg => ({
+    role: msg.classList.contains('user') ? 'user' : 'assistant',
+    content: msg.textContent.trim()
+  }));
+
+  try {
+    const response = await fetch('http://localhost:5000/api/chat/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session: messages })
+    });
+
+    const result = await response.json();
+    alert(result.success ? '✅ Chat saved!' : '❌ Save failed!');
+  } catch (err) {
+    console.error('Save error:', err);
+    alert('❌ Failed to save chat.');
+  }
+}
+
+    // Auto-typing intro message
+    window.onload = () => {
+      const introEl = document.getElementById('intro-message');
+      const text = "What's your command today?";
+      let i = 0;
+  
+      function type() {
+        if (i < text.length) {
+          introEl.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, 50);
+        }
+      }
+  
+      type();
+    };
+  </script>
+  
+  
+  
+</body>
 </html>

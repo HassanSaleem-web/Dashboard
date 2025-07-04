@@ -1,324 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneX Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sidebar-bg: #1e1f29;
+      --sidebar-text: #ffffff;
+      --sidebar-active: #7f5af0;
+      --main-bg: #f5f6fa;
+      --header-bg: #ffffff;
+      --footer-bg: #7f5af0;
+      --text-color: #1e1f29;
+    }
 
-    <meta charset="utf-8">
-    <meta name="author" content="templatemo">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      color: var(--text-color);
+      background-color: var(--main-bg);
+    }
 
-    <title>GeneX - Idea Detail Page</title>
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--header-bg);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    header .logo img {
+      height: 36px;
+    }
 
+    header nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-liberty-market.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<!--
+    header nav a.active {
+      color: var(--sidebar-active);
+    }
 
-TemplateMo 577 Liberty Market
+    .layout {
+      display: flex;
+      flex: 1;
+      margin-top: 64px;
+    }
 
-https://templatemo.com/tm-577-liberty-market
+    aside.sidebar {
+      width: 260px;
+      background-color: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      padding: 24px;
+      height: calc(100vh - 64px);
+      position: sticky;
+      top: 64px;
+    }
 
--->
-  </head>
+    aside.sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 32px;
+      font-weight: 600;
+    }
+
+    aside.sidebar ul {
+      list-style: none;
+    }
+
+    aside.sidebar li {
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    aside.sidebar li:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    main.content {
+      flex: 1;
+      padding: 32px;
+      overflow-y: auto;
+    }
+
+    footer {
+      background-color: var(--footer-bg);
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
 
 <body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="GeneX Logo">
     </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="explore.html">Explore</a></li>
-                        <li><a href="details.html" class="active">Idea Details</a></li>
-                        <li><a href="author.html">Author</a></li>
-                        <li><a href="create.html">Create Yours</a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="explore.html">Explore</a>
+      <a href="thelab.html" class="active">The Lab</a>
+      <a href="create.html">Create Yours</a>
+    </nav>
   </header>
-  <!-- ***** Header Area End ***** -->
 
-  <div class="page-heading normal-space">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h6>GeneX</h6>
-          <h2>View Idea Details</h2>
-          <span>Home > <a href="#">Idea Details</a></span>
-          <div class="buttons">
-            <div class="main-button">
-              <a href="explore.html">Explore Our Ideas</a>
-            </div>
-            <div class="border-button">
-              <a href="create.html">Create Your Idea</a>
-            </div>
-          </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Admin Panel</h2>
+      <ul>
+        <li>User Management</li>
+        <li>Project Monitoring</li>
+        <li>AI Usage Insights</li>
+        <li>Blockchain Overview</li>
+        <li>Content/Flag Reports</li>
+      </ul>
+    </aside>
+    <main class="content">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 40px;">
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <p style="font-size: 14px; color: gray;">Today's Money</p>
+          <h2 style="font-size: 24px; font-weight: 700; margin-top: 8px;">$53,000</h2>
+          <p style="color: green; font-size: 13px;">+55% since yesterday</p>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <p style="font-size: 14px; color: gray;">Today's Users</p>
+          <h2 style="font-size: 24px; font-weight: 700; margin-top: 8px;">2,300</h2>
+          <p style="color: green; font-size: 13px;">+3% since last week</p>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <p style="font-size: 14px; color: gray;">New Clients</p>
+          <h2 style="font-size: 24px; font-weight: 700; margin-top: 8px;">+3,462</h2>
+          <p style="color: red; font-size: 13px;">-2% since last quarter</p>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <p style="font-size: 14px; color: gray;">Sales</p>
+          <h2 style="font-size: 24px; font-weight: 700; margin-top: 8px;">$103,430</h2>
+          <p style="color: green; font-size: 13px;">+5% than last month</p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="item-details-page">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>View Details <em>For Idea</em> Here.</h2>
-          </div>
+      <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 40px;">
+        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Sales Overview</h3>
+        <canvas id="salesChart" height="100"></canvas>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h4 style="font-weight: 600; margin-bottom: 10px;">Sales by Country</h4>
+          <p>🇺🇸 <strong>United States</strong> — Sales: 2500, Value: $230,900, Bounce: 29.9%</p>
         </div>
-        <div class="col-lg-7">
-          <div class="left-image">
-            <img src="assets/images/item-details-01.jpg" alt="" style="border-radius: 20px;">
-          </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <h4>Dolores Haze Westworld Eye</h4>
-          <span class="author">
-            <img src="assets/images/author-02.jpg" alt="" style="max-width: 50px; border-radius: 50%;">
-            <h6>GeneX Artist<br><a href="#">@GeneXart</a></h6>
-          </span>
-          <p>Lorem ipsum dolor sit amet, consectetu dipiscingei elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <div class="row">
-            <div class="col-3">
-              <span class="bid">
-                Current Bid<br><strong>6.06 ETH</strong><br><em>($8,025.50)</em>
-              </span>
-            </div>
-            <div class="col-4">
-              <span class="owner">
-                Owner<br><strong>David Walker</strong><br><em>(@davidwalker)</em>
-              </span>
-            </div>
-            <div class="col-5">
-              <span class="ends">
-                Ends In<br><strong>3D 05H 20M 58S</strong><br><em>(January 22nd, 2021)</em>
-              </span>
-            </div>
-          </div>
-          <form action="submit">
-            <label for="quantity-text">Place Bid:</label>
-            <input placeholder="1 ETH" class="quantity-text">
-            <button type="submit" id="form-submit" class="main-button">Submit Now</button>
-          </form>
-        </div>
-        <div class="col-lg-12">
-          <div class="current-bid">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="mini-heading"><h4>Current Biddings Prices ( ETH )</h4></div>
-              </div>
-              <div class="col-lg-6">
-                <fieldset>
-                  <select name="Category" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                      <option selected>Sort By: Latest</option>
-                      <option type="checkbox" name="option1" value="old">Sort By: Oldest</option>
-                      <option value="low">Sort By: Lowest</option>
-                      <option value="high">Sort By: Highest</option>
-                  </select>
-              </fieldset>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="item">
-                  <div class="left-img">
-                    <img src="assets/images/current-01.jpg" alt="">
-                  </div>
-                  <div class="right-content">
-                    <h4>David Walker</h4>
-                    <a href="#">@davidwalker</a>
-                    <div class="line-dec"></div>
-                    <h6>Bid: <em>0.06 ETH</em></h6>
-                    <span class="date">24/07/2022, 22:00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="item">
-                  <div class="left-img">
-                    <img src="assets/images/current-02.jpg" alt="">
-                  </div>
-                  <div class="right-content">
-                    <h4>David Walker</h4>
-                    <a href="#">@davidwalker</a>
-                    <div class="line-dec"></div>
-                    <h6>Bid: <em>0.06 ETH</em></h6>
-                    <span class="date">24/07/2022, 22:00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="item">
-                  <div class="left-img">
-                    <img src="assets/images/current-03.jpg" alt="">
-                  </div>
-                  <div class="right-content">
-                    <h4>David Walker</h4>
-                    <a href="#">@davidwalker</a>
-                    <div class="line-dec"></div>
-                    <h6>Bid: <em>0.06 ETH</em></h6>
-                    <span class="date">24/07/2022, 22:00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="item">
-                  <div class="left-img">
-                    <img src="assets/images/current-02.jpg" alt="">
-                  </div>
-                  <div class="right-content">
-                    <h4>David Walker</h4>
-                    <a href="#">@davidwalker</a>
-                    <div class="line-dec"></div>
-                    <h6>Bid: <em>0.06 ETH</em></h6>
-                    <span class="date">24/07/2022, 22:00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="item">
-                  <div class="left-img">
-                    <img src="assets/images/current-04.jpg" alt="">
-                  </div>
-                  <div class="right-content">
-                    <h4>David Walker</h4>
-                    <a href="#">@davidwalker</a>
-                    <div class="line-dec"></div>
-                    <h6>Bid: <em>0.06 ETH</em></h6>
-                    <span class="date">24/07/2022, 22:00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="item">
-                  <div class="left-img">
-                    <img src="assets/images/current-01.jpg" alt="">
-                  </div>
-                  <div class="right-content">
-                    <h4>David Walker</h4>
-                    <a href="#">@davidwalker</a>
-                    <div class="line-dec"></div>
-                    <h6>Bid: <em>0.06 ETH</em></h6>
-                    <span class="date">24/07/2022, 22:00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <h4 style="font-weight: 600; margin-bottom: 10px;">Devices</h4>
+          <p>250 in stock, 346+ sold</p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="create-nft">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>Publish Your idea & Put It On The Market.</h2>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="main-button">
-            <a href="create.html">Publish Your idea Now</a>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item first-item">
-            <div class="number">
-              <h6>1</h6>
-            </div>
-            <div class="icon">
-              <img src="assets/images/icon-02.png" alt="">
-            </div>
-            <h4>Communicate with AI Mentor</h4>
-            <p>The AI bot that will be your guide and your scribe for tracking and forseeing your progress.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item second-item">
-            <div class="number">
-              <h6>2</h6>
-            </div>
-            <div class="icon">
-              <img src="assets/images/icon-04.png" alt="">
-            </div>
-            <h4>Explore the Community</h4>
-            <p>Get in touch with what is happening around you through a peek into what your others might be doing.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="icon">
-              <img src="assets/images/icon-06.png" alt="">
-            </div>
-            <h4>Chat with investors &amp; Make Profit</h4>
-            <p>Communicate directly with the investors through our seemless chatting facility. </p>
-          </div>
-        </div>
-      </div>
-    </div>
+      
+      <!-- Future modules or welcome message goes here -->
+    </main>
   </div>
 
   <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2022 <a href="#">GeneX</a>  Marketplace Co., Ltd. All rights reserved.
-          &nbsp;&nbsp;
-          Designed by <a title="HTML CSS Templates" rel="sponsored" href="https://templatemo.com" target="_blank">CR3ATIV3 CORN3R</a></p>
-        </div>
-      </div>
-    </div>
+    © 2022 GeneX Marketplace Co., Ltd. — Designed by CR3ATIV3 CORN3R
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('salesChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Mobile apps',
+        data: [50, 150, 300, 250, 320, 200, 400, 280, 460],
+        fill: true,
+        backgroundColor: 'rgba(127, 90, 240, 0.1)',
+        borderColor: '#7f5af0',
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+</body>
 
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
-  </body>
 </html>

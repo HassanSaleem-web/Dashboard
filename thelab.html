@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Lab | GeneX</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/templatemo-liberty-market.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('assets/images/heading-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Rajdhani', sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+.hero-section {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  min-height: 80px;
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.main-nav .nav {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav .nav li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.main-nav .nav li a.active {
+  background-color: #854fff;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.main-nav .logo img {
+  height: 32px;
+}
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.milestone-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-icon {
+  width: 20px;
+  height: 20px;
+  color: #aaa;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.action-icon:hover {
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.lab-body {
+  display: flex;
+  padding: 40px 0;
+  gap: 24px;
+  max-width: 1440px;
+  flex-grow: 1;
+  margin-top: 30px; /* 👈 Adds spacing under the navbar */
+}
+
+
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 0;
+  height: calc(120vh - 60px);
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(132, 94, 247, 0.2);
+}
+
+
+.project-list-header {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.08); /* translucent glass effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 24px;
+  z-index: 10;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.project-list ul {
+  overflow-y: auto;
+  padding: 24px;
+  flex-grow: 1;
+}
+
+
+.project-list li {
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  background: rgba(81, 60, 197, 0.25); /* translucent purple */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* subtle border for layering */
+}
+
+
+.project-list li:hover {
+  background-color: rgba(132, 94, 247, 0.4);
+}
+
+.main-project-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-summary {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-summary h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.milestone-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.milestone-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(132, 94, 247, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.milestone-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(132, 94, 247, 0.2);
+}
+
+.milestone-card h5 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+}
+
+.milestone-card p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e0dcec;
+}
+.milestone-card.add-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px rgba(160, 102, 245, 0.3);
+  transform: translateY(-2px);
+}
+
+
+footer {
+  background: transparent;
+  padding: 30px 0;
+  text-align: center;
+  color: #ccc;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* Applies to all scrollable elements */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a066f5, #7f56d9);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c084fc, #9b6bfa);
+}
+
+/* Firefox Support */
+.scrollable, .project-list ul {
+  scrollbar-width: thin;
+  scrollbar-color: #a066f5 rgba(255, 255, 255, 0.05);
+}
+.edit-icon:hover,
+.delete-icon:hover {
+  color: #ff9;
+  transform: scale(1.1);
+}
+
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.milestone-title {
+  flex: 1;
+}
+
+.milestone-title h5 {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: #ffffff;
+  word-break: break-word;
+}
+
+.pin-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.milestone-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.milestone-description {
+  margin-top: 10px;
+}
+
+.milestone-description p {
+  margin: 0;
+  color: #e0dcec;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-word;
+  padding-bottom: 12px;
+}
+
+.milestone-complete {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+  margin-top: auto; /* ensures it sticks to bottom */
+}
+
+
+.complete-btn {
+  background: #00B894;
+  border: none;
+  color: white;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.complete-btn:hover {
+  background: #22c55e;
+  transform: scale(1.05);
+}
+.milestone-toggle {
+  margin-top: 12px;
+}
+
+.toggle-btn {
+  background-color: #a066f5;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #8e54e9;
+}
+
+
+  </style>
+  
+  
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="hero-section">
+    <header class="header-area header-sticky">
+      <div class="header-container main-nav">
+        <a href="index.html" class="logo">
+          <img src="assets/images/logo.png" alt="GeneX Logo" />
+        </a>
+        <ul class="nav">
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          <li><a href="thelab.html" class="active">The Lab</a></li>
+          
+          <li><a href="create.html">Create Yours</a></li>
+        </ul>
+      </div>
+    </header>
+  </div>
+
+  <!-- Main Lab Body -->
+  <main class="lab-body">
+    <!-- Project List -->
+    <div class="project-list">
+      <div class="project-list-header">
+      <h4>Projects</h4>
+    </div>
+      <ul>
+        <li>AI Math Tutor</li>
+        <li>Decentralized Voting</li>
+        <li>Fitness Recommender</li>
+      </ul>
+      <button class="btn btn-outline-light btn-sm mt-3">+ Add Project</button>
+    </div>
+
+    <!-- Project Summary & Milestones -->
+    <div class="main-project-view">
+      <div class="project-summary">
+        <h3>AI Math Tutor for Middle Schoolers</h3>
+        <p>This project focuses on creating a conversational AI that helps 6th to 8th grade students solve math problems using cleaned, curriculum-aligned datasets and smart pedagogical responses.</p>
+      </div>
+      <div style="text-align: right; margin-right: 12px;">
+        <button onclick="saveProjectToBackend()" class="btn btn-outline-light btn-sm" style="margin-top: -10px; margin-bottom: 10px; background: rgba(255,255,255,0.05); border-color: #a066f5; color: #fff; border-radius: 8px;">
+          ⚡ Save Project
+        </button>
+        
+        
+      </div>
+      <div class="milestone-board" id="milestoneBoard">
+        <!-- Milestones will be inserted here dynamically -->
+        <div class="milestone-card add-card" onclick="openMilestoneModal()" style="cursor: pointer;">
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+            <div style="font-size: 32px; color: #c084fc; margin-bottom: 8px;">➕</div>
+            <p style="font-family: 'Rajdhani', sans-serif; font-weight: 600; color: #ccc; margin: 0;">Add Milestone</p>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>
+        Copyright © 2022 <a href="#">GeneX</a> Marketplace Co., Ltd.
+        &nbsp;&nbsp; Designed by <a href="https://templatemo.com" target="_blank">CR3ATIV3 CORN3R</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <!-- Milestone Modal -->
+<div id="milestoneModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background: #2a124a; padding: 30px; border-radius: 12px; width: 350px; box-shadow: 0 0 20px #000;">
+    <h5 style="color: #fff;">New Milestone</h5>
+    <input type="text" id="milestoneTitle" placeholder="Title" style="width:100%; margin-top:10px; padding:10px; border:none; border-radius:6px;" />
+    <textarea id="milestoneDesc" placeholder="Description" style="width:100%; margin-top:10px; padding:10px; border:none; border-radius:6px;" rows="4"></textarea>
+    <div style="text-align:right; margin-top:15px;">
+      <button onclick="closeMilestoneModal()" style="background:#444; color:#fff; border:none; padding:6px 12px; border-radius:6px;">Cancel</button>
+      <button onclick="addMilestone()" style="background:#a066f5; color:#fff; border:none; padding:6px 12px; border-radius:6px;">Add</button>
+    </div>
+  </div>
+</div>
+
+</body>
+<script>
+  let allProjects = [];
+
+  async function loadProjects() {
+    try {
+      const response = await fetch('http://localhost:5000/api/projects');
+      const projects = await response.json();
+      console.log("📦 Fetched projects from backend:", projects);
+
+      allProjects = projects; // Store for access on click
+      const ul = document.querySelector('.project-list ul');
+      ul.innerHTML = '';
+
+      projects.forEach((project, index) => {
+        const li = document.createElement('li');
+        li.textContent = project.title;
+        li.addEventListener('click', () => displayProject(index)); // click handler
+        ul.appendChild(li);
+      });
+
+      if (projects.length > 0) {
+        displayProject(0); // Show first project by default
+      }
+    } catch (err) {
+      console.error('❌ Failed to load projects:', err);
+    }
+  }
+
+  function displayProject(index) {
+  const project = allProjects[index];
+  if (!project) return;
+
+  const summaryContainer = document.querySelector('.project-summary');
+  summaryContainer.innerHTML = `
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+
+    <div>
+      <h3>${project.title}</h3>
+      <p>${project.chatSummary}</p>
+    </div>
+    <div id="completionMeter" style="flex-shrink: 0; width: 100px; height: 60px; display: flex; align-items: center; justify-content: center;">
+
+      <svg viewBox="0 0 200 100" width="100%" height="100%">
+        <defs>
+          <linearGradient id="meterGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00bcd4"/>
+            <stop offset="100%" stop-color="#e91e63"/>
+          </linearGradient>
+        </defs>
+        <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="url(#meterGradient)" stroke-width="20" />
+        <line id="needle" x1="100" y1="100" x2="100" y2="30" stroke="#fff" stroke-width="4" stroke-linecap="round" transform="rotate(0, 100, 100)" />
+      </svg>
+    </div>
+  </div>
+`;
+
+
+  const board = document.getElementById('milestoneBoard');
+  board.innerHTML = ''; // Clear previous cards
+
+  // Render project milestones
+  if (project.milestones && Array.isArray(project.milestones)) {
+    project.milestones.forEach((m, i) => {
+  const card = document.createElement('div');
+  card.className = 'milestone-card';
+
+  card.innerHTML = `
+  <div class="milestone-header">
+    <div class="milestone-title">
+      <h5>📌 ${m.title}</h5>
+    </div>
+    <div class="milestone-actions">
+      <img src="assets/edit-pencil-write-svgrepo-com.svg" alt="Edit" class="action-icon" onclick="editMilestone(${index}, ${i})">
+      <span class="action-icon" onclick="deleteMilestone(${index}, ${i})">🗑️</span>
+    </div>
+  </div>
+  <div class="milestone-description">
+    <p>${m.description}</p>
+  </div>
+  <div class="milestone-toggle">
+    <button class="btn btn-sm toggle-btn" onclick="toggleCompletion(${index}, ${i})">
+  ${m.completed ? '✅ Mark Incomplete' : '✔️ Mark Complete'}
+</button>
+
+  </div>
+`;
+
+
+  board.appendChild(card);
+});
+
+  }
+
+  // Add the ➕ manual add card again
+  const addCard = document.createElement('div');
+  addCard.className = 'milestone-card add-card';
+  addCard.onclick = openMilestoneModal;
+  addCard.innerHTML = `<div style="text-align:center; font-size: 24px; color: #ccc;">➕</div><p style="text-align:center; margin-top: 8px;">Add Milestone</p>`;
+  board.appendChild(addCard);
+
+  summaryContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  updateMeter(project);
+
+}
+
+function updateMeter(project) {
+  const needle = document.getElementById("needle");
+  if (!needle || !project?.milestones) return;
+
+  const total = project.milestones.length;
+  const completed = project.milestones.filter(m => m.completed).length;
+  const percent = total > 0 ? (completed / total) : 0;
+
+  // Map percent [0, 1] to angle [-90°, +90°]
+  const angle = -90 + (percent * 180);
+  needle.setAttribute("transform", `rotate(${angle}, 100, 100)`);
+}
+
+  document.addEventListener('DOMContentLoaded', loadProjects);
+</script>
+<script>
+  function openMilestoneModal() {
+    document.getElementById('milestoneModal').style.display = 'flex';
+  }
+
+  function closeMilestoneModal() {
+  document.getElementById('milestoneModal').style.display = 'none';
+  document.getElementById('milestoneTitle').value = '';
+  document.getElementById('milestoneDesc').value = '';
+  window.editingProjectIndex = undefined;
+  window.editingMilestoneIndex = undefined;
+}
+
+
+function addMilestone() {
+  const title = document.getElementById('milestoneTitle').value.trim();
+  const desc = document.getElementById('milestoneDesc').value.trim();
+  if (!title || !desc) return alert("Please fill out both fields");
+
+  const projectIndex = window.editingProjectIndex;
+  const milestoneIndex = window.editingMilestoneIndex;
+
+  if (projectIndex !== undefined && milestoneIndex !== undefined) {
+    // Edit mode
+    allProjects[projectIndex].milestones[milestoneIndex].title = title;
+    allProjects[projectIndex].milestones[milestoneIndex].description = desc;
+    window.editingProjectIndex = undefined;
+    window.editingMilestoneIndex = undefined;
+    displayProject(projectIndex);
+  } else {
+    // Add mode
+    const currentIndex = allProjects.findIndex(p =>
+      p.title === document.querySelector('.project-summary h3')?.textContent
+    );
+
+    if (currentIndex !== -1) {
+      allProjects[currentIndex].milestones.push({
+        title,
+        description: desc,
+        completed: false
+      });
+      displayProject(currentIndex);
+    }
+  }
+
+  closeMilestoneModal();
+}
+ async function generateMilestonesWithAI() {
+  try {
+    const res = await fetch('http://localhost:5000/api/projects/ai-generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ session: [], username: "anonymous" }) // session is dummy for now
+    });
+
+    const data = await res.json();
+    const project = data.project;
+    if (!project) return;
+
+    // Add project to the list
+    allProjects.unshift(project); // insert at top
+    loadProjects(); // re-render list
+    displayProject(0); // show newly created project
+  } catch (err) {
+    console.error("❌ AI milestone generation failed:", err);
+  }
+}
+function editMilestone(projectIndex, milestoneIndex) {
+  const milestone = allProjects[projectIndex].milestones[milestoneIndex];
+  document.getElementById('milestoneTitle').value = milestone.title;
+  document.getElementById('milestoneDesc').value = milestone.description;
+
+  // Store in global temp
+  window.editingProjectIndex = projectIndex;
+  window.editingMilestoneIndex = milestoneIndex;
+
+  document.getElementById('milestoneModal').style.display = 'flex';
+}
+
+function deleteMilestone(projectIndex, milestoneIndex) {
+  if (!confirm('Are you sure you want to delete this milestone?')) return;
+
+  allProjects[projectIndex].milestones.splice(milestoneIndex, 1);
+  displayProject(projectIndex);
+}
+function toggleCompletion(projectIndex, milestoneIndex) {
+  const milestone = allProjects[projectIndex].milestones[milestoneIndex];
+  milestone.completed = !milestone.completed;
+  displayProject(projectIndex); // Re-render to reflect the new state
+}
+
+async function saveProjectToBackend() {
+  const projectSummary = document.querySelector('.project-summary h3')?.textContent;
+  const projectDescription = document.querySelector('.project-summary p')?.textContent;
+  const selectedProject = allProjects.find(p => p.title === projectSummary && p.chatSummary === projectDescription);
+
+  const project = {
+  _id: selectedProject?._id,  // Include _id if matched
+  title: projectSummary,
+  chatSummary: projectDescription,
+  milestones: []
+};
+
+
+  const cards = document.querySelectorAll('.milestone-card:not(.add-card)');
+  cards.forEach(card => {
+    const title = card.querySelector('.milestone-title h5')?.textContent?.replace(' ', '').trim();
+    const description = card.querySelector('.milestone-description p')?.textContent?.trim();
+    const isComplete = card.querySelector('.toggle-btn')?.textContent.includes('Incomplete');
+
+    if (title && description) {
+      project.milestones.push({
+        title,
+        description,
+        completed: isComplete // ✅ logic based on button text
+      });
+    }
+  });
+
+  try {
+    const res = await fetch('http://localhost:5000/api/projects/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(project)
+    });
+
+    const data = await res.json();
+    alert('✅ Project saved successfully!');
+    console.log(data);
+  } catch (err) {
+    console.error("❌ Failed to save project:", err);
+    alert('❌ Failed to save project.');
+  }
+}
+
+</script>
+
+
+
+
+</html>
