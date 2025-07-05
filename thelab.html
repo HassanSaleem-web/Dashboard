@@ -461,7 +461,7 @@ footer {
 
   async function loadProjects() {
     try {
-      const response = await fetch('https://backendanorok.onrender.com/api/chat');
+      const response = await fetch('https://backendanorok.onrender.com/api/projects/');
       const projects = await response.json();
       console.log("📦 Fetched projects from backend:", projects);
 
@@ -625,7 +625,7 @@ function addMilestone() {
 }
  async function generateMilestonesWithAI() {
   try {
-    const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
+    const res = await fetch('https://backendanorok.onrender.com/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -698,7 +698,7 @@ async function saveProjectToBackend() {
   });
 
   try {
-    const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
+    const res = await fetch('https://backendanorok.onrender.com/api/projects/save', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
